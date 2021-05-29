@@ -1,0 +1,28 @@
+class products:
+    def __init__(self,name,price):
+        self.name=name
+        self.price=price
+    def __str__(self):
+        #return self.name+' '+str(self.price)
+        return f'{self.name} $ {self.price}'
+    def __repr__(self):
+        return f'<product({self.name},{self.price})>'
+    ####相加定義屬性
+    def __add__(self,other): 
+        if isinstance(other,str):
+            self.name+=other
+        if isinstance(other,products):
+            return [self,other]
+    ####相乘定義屬性   
+    def __mul__(self,other):
+        re=[]
+        if isinstance(other,int):
+                for i in range(other):
+                    re.append(self)
+        return re      
+p1=products('珍珠奶茶',60)
+p2=products('錫蘭紅茶',30)
+#p1+p2
+#p+'紅玉'
+print(p1*5)
+#print(repr(p))  
